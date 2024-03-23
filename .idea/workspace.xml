@@ -4,28 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d6e5e79-fbb5-496f-b861-ff57c58f0309" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/settings.gradle.kts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/pvlov/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/pvlov/datastructures/BinomialHeap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/pvlov/result/AsyncResult.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/pvlov/result/Err.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/pvlov/result/Ok.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/pvlov/result/Result.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/pvlov/tuples/Pair.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/pvlov/tuples/Quadruple.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/pvlov/tuples/Triple.java" afterDir="false" />
-    </list>
+    <list default="true" id="5d6e5e79-fbb5-496f-b861-ff57c58f0309" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -109,7 +88,7 @@
       <workItem from="1710617906365" duration="737000" />
       <workItem from="1710708022502" duration="1248000" />
       <workItem from="1710800103198" duration="3231000" />
-      <workItem from="1711201650424" duration="1487000" />
+      <workItem from="1711201650424" duration="1795000" />
     </task>
     <servers />
   </component>
