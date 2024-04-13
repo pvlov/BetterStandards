@@ -10,15 +10,19 @@ import java.util.function.Supplier;
 
 public final class Ok<T, Void> implements Result<T, Void> {
     private final T okValue;
+
     private Ok(final T val) {
         this.okValue = val;
     }
+
     public static <T, Void> Ok<T, Void> of(final T okValue) {
         return new Ok<>(okValue);
     }
+
     public static <Void> Ok<java.lang.Void, Void> empty() {
         return new Ok<>(null);
     }
+
     @Override
     public T unwrap() {
         return okValue;
@@ -142,6 +146,6 @@ public final class Ok<T, Void> implements Result<T, Void> {
 
     @Override
     public String toString() {
-        return "Ok(" + okValue  + ")";
+        return "Ok(" + okValue + ")";
     }
 }

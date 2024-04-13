@@ -1,4 +1,3 @@
-
 package pvlov.betterstandards.container.result;
 
 import java.util.NoSuchElementException;
@@ -20,6 +19,7 @@ public final class Err<Void, E> implements Result<Void, E> {
     public static <Void, E> Err<Void, E> of(final E errorValue) {
         return new Err<>(errorValue);
     }
+
     @Override
     public Void unwrap() throws RuntimeException {
         throw new RuntimeException("Calling unwrap() on Err!");
@@ -103,6 +103,7 @@ public final class Err<Void, E> implements Result<Void, E> {
     public <U> U mapOrElse(final Function<? super Void, ? extends U> okMapper, final Function<? super E, ? extends U> errMapper) {
         return errMapper.apply(errorValue);
     }
+
     @Override
     public <U> Result<U, E> map(Function<? super Void, ? extends U> okMapper) {
         return Err.of(errorValue);
@@ -128,6 +129,7 @@ public final class Err<Void, E> implements Result<Void, E> {
     public Result<java.lang.Void, E> toVoid() {
         return Err.of(errorValue);
     }
+
     @Override
     public Result<Void, NoSuchElementException> filter(Predicate<? super Void> condition) {
         return Err.of(new NoSuchElementException("Calling filter() on Err!"));
@@ -141,6 +143,6 @@ public final class Err<Void, E> implements Result<Void, E> {
 
     @Override
     public String toString() {
-        return "Err(" + errorValue  + ")";
+        return "Err(" + errorValue + ")";
     }
 }

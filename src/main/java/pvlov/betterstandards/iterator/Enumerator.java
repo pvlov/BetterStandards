@@ -13,6 +13,22 @@ import java.util.NoSuchElementException;
  */
 public interface Enumerator<T> {
 
+    static <T> Enumerator<T> fromIterator(final Iterator<T> source) {
+        return new Enumerator<>() {
+            int counter = 0;
+
+            @Override
+            public boolean hasNext() {
+                return source.hasNext();
+            }
+
+            @Override
+            public Tuple<Integer, T> next() throws NoSuchElementException {
+                return new Tuple<>(counter++, source.next());
+            }
+        };
+    }
+
     boolean hasNext();
 
     Tuple<Integer, T> next() throws NoSuchElementException;
@@ -30,21 +46,6 @@ public interface Enumerator<T> {
                     throw new NoSuchElementException();
                 }
                 return Enumerator.this.next().second();
-            }
-        };
-    }
-
-
-    static <T> Enumerator<T> fromIterator(final Iterator<T> source) {
-        return new Enumerator<>() {
-            int counter = 0;
-            @Override
-            public boolean hasNext() {
-                return source.hasNext();
-            }
-            @Override
-            public Tuple<Integer, T> next() throws NoSuchElementException {
-                return new Tuple<>(counter++, source.next());
             }
         };
     }

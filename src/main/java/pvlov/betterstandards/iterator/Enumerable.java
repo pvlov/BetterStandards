@@ -6,14 +6,21 @@ import java.util.Iterator;
 
 @FunctionalInterface
 public interface Enumerable<T> extends Iterable<Tuple<Integer, T>> {
+    static <T> Enumerable<T> fromIterable(final Iterable<T> source) {
+        return () -> Enumerator.fromIterator(source.iterator());
+    }
+
     Enumerator<T> enumerator();
-    default  Iterable<T> intoIterable() {
+
+    default Iterable<T> intoIterable() {
         return () -> enumerator().intoIterator();
     }
+
     @Override
     default Iterator<Tuple<Integer, T>> iterator() {
         return new Iterator<>() {
             final Enumerator<T> enumerator = Enumerable.this.enumerator();
+
             @Override
             public boolean hasNext() {
                 return enumerator.hasNext();
@@ -24,8 +31,5 @@ public interface Enumerable<T> extends Iterable<Tuple<Integer, T>> {
                 return enumerator.next();
             }
         };
-    }
-    static <T> Enumerable<T> fromIterable(final Iterable<T> source) {
-       return () -> Enumerator.fromIterator(source.iterator());
     }
 }
