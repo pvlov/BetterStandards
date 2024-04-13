@@ -1,2 +1,2 @@
-rootProject.name = "BetterStandards"
+rootProject.name = "pvlov.betterstandards"
 

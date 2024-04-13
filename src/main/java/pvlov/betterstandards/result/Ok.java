@@ -1,21 +1,22 @@
-package com.pvlov.result;
+package pvlov.betterstandards.result;
 
+import java.util.NoSuchElementException;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.function.Supplier;
 
 public final class Ok<T, Void> implements Result<T, Void> {
-    final T okValue;
-
+    private final T okValue;
     private Ok(final T val) {
         this.okValue = val;
     }
     public static <T, Void> Ok<T, Void> of(final T okValue) {
         return new Ok<>(okValue);
     }
-    public static <Void> Ok<Void, Void> empty() {
+    public static <Void> Ok<java.lang.Void, Void> empty() {
         return new Ok<>(null);
     }
     @Override
@@ -29,7 +30,17 @@ public final class Ok<T, Void> implements Result<T, Void> {
     }
 
     @Override
+    public boolean isOkAnd(Predicate<? super T> condition) {
+        return condition.test(okValue);
+    }
+
+    @Override
     public boolean isErr() {
+        return false;
+    }
+
+    @Override
+    public boolean isErrAnd(Predicate<? super Void> condition) {
         return false;
     }
 
@@ -41,9 +52,15 @@ public final class Ok<T, Void> implements Result<T, Void> {
     @Override
     public void ifErr(final Consumer<? super Void> action) {
     }
+
     @Override
-    public Optional<? extends T> orElse(final Supplier<? extends Optional<? extends T>> orSupplier) {
-        return Optional.of(okValue);
+    public T orElse(final T defaultValue) {
+        return okValue;
+    }
+
+    @Override
+    public Result<? extends T, Void> or(final Supplier<? extends Result<? extends T, ? extends Void>> orSupplier) {
+        return this;
     }
 
     @Override
@@ -106,6 +123,17 @@ public final class Ok<T, Void> implements Result<T, Void> {
     public void match(Consumer<? super T> okConsumer, Consumer<? super Void> errConsumer) {
         okConsumer.accept(okValue);
     }
+
+    @Override
+    public Result<java.lang.Void, Void> toVoid() {
+        return Ok.empty();
+    }
+
+    @Override
+    public Result<T, NoSuchElementException> filter(Predicate<? super T> condition) {
+        return condition.test(okValue) ? Ok.of(okValue) : Err.of(new NoSuchElementException("Ok-Value of the Result did not pass the given condition"));
+    }
+
 
     @Override
     public boolean equals(Object other) {

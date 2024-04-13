@@ -1,10 +1,12 @@
 
-package com.pvlov.result;
+package pvlov.betterstandards.result;
 
+import java.util.NoSuchElementException;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.function.Supplier;
 
 public final class Err<Void, E> implements Result<Void, E> {
@@ -29,8 +31,18 @@ public final class Err<Void, E> implements Result<Void, E> {
     }
 
     @Override
+    public boolean isOkAnd(final Predicate<? super Void> condition) {
+        return false;
+    }
+
+    @Override
     public boolean isErr() {
         return true;
+    }
+
+    @Override
+    public boolean isErrAnd(final Predicate<? super E> condition) {
+        return condition.test(errorValue);
     }
 
     @Override
@@ -43,7 +55,12 @@ public final class Err<Void, E> implements Result<Void, E> {
     }
 
     @Override
-    public Optional<? extends Void> orElse(final Supplier<? extends Optional<? extends Void>> orSupplier) {
+    public Void orElse(final Void defaultValue) {
+        return defaultValue;
+    }
+
+    @Override
+    public Result<? extends Void, ? extends E> or(final Supplier<? extends Result<? extends Void, ? extends E>> orSupplier) {
         return orSupplier.get();
     }
 
@@ -106,6 +123,16 @@ public final class Err<Void, E> implements Result<Void, E> {
     public void match(Consumer<? super Void> okConsumer, Consumer<? super E> errConsumer) {
         errConsumer.accept(errorValue);
     }
+
+    @Override
+    public Result<java.lang.Void, E> toVoid() {
+        return Err.of(errorValue);
+    }
+    @Override
+    public Result<Void, NoSuchElementException> filter(Predicate<? super Void> condition) {
+        return Err.of(new NoSuchElementException("Calling filter() on Err!"));
+    }
+
 
     @Override
     public boolean equals(Object other) {
