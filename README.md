@@ -1,4 +1,4 @@
-# BetterStandards add QoL to your Java Development
+# BetterStandards: Add QoL to your Java Development
 
 ### Results
 
