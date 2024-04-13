@@ -1,6 +1,6 @@
 package pvlov.betterstandards.iterator;
 
-import pvlov.betterstandards.tuples.Tuple;
+import pvlov.betterstandards.container.tuples.Tuple;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;

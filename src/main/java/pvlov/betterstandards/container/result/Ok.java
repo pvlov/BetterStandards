@@ -1,4 +1,4 @@
-package pvlov.betterstandards.result;
+package pvlov.betterstandards.container.result;
 
 import java.util.NoSuchElementException;
 import java.util.Objects;
