@@ -1,5 +1,8 @@
 package pvlov.betterstandards.container.result;
 
+import pvlov.betterstandards.functional.ExceptionallyRunnable;
+import pvlov.betterstandards.functional.ExceptionallySupplier;
+
 import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.function.Consumer;
@@ -22,7 +25,7 @@ public sealed interface Result<T, E> permits Ok, Err {
      * respective Result-Type. If the supplying function throws any RuntimeException it is wrapped inside
      * an instance of {@link Err}, otherwise the value of the Suppliers get()-method is wrapped inside an instance of {@link Ok}
      *
-     * @param supplier the supplying-function that can throw an Exception
+     * @param supplier the supplying-function that can throw a RuntimeException
      * @return If the supplier throws an Exception an instance of {@link Err}
      * If the supplier returns a value without any Exceptions the value
      * produced by the Supplier is returned wrapped into an instance of {@link Ok}
@@ -52,6 +55,45 @@ public sealed interface Result<T, E> permits Ok, Err {
             return Err.of(err);
         }
     }
+
+    /**
+     * This method evaluates the supplying function and wraps the resulting value into the
+     * respective Result-Type. If the supplying function throws any checked Exception it is wrapped inside
+     * an instance of {@link Err}, otherwise the value of the Suppliers get()-method is wrapped inside an instance of {@link Ok}
+     *
+     * @param supplier the supplying-function that can throw a checked Exception
+     * @return If the supplier throws an Exception an instance of {@link Err}
+     * If the supplier returns a value without any Exceptions the value
+     * produced by the Supplier is returned wrapped into an instance of {@link Ok}
+     */
+    @SuppressWarnings("unchecked")
+    static <T, E extends Throwable> Result<T, E> ofChecked(final ExceptionallySupplier<? extends T, E> supplier) {
+        try {
+            return Ok.of(supplier.get());
+        } catch (final Throwable throwable) {
+            return Err.of((E) throwable);
+        }
+    }
+
+    /**
+     * Runs the given runnable, catching any exceptions and returning a Result. If the runnable completes without
+     * throwing a checked exception, an Ok(Void) result is returned. If the runnable throws a checked exception, an Err containing
+     * the exception is returned.
+     *
+     * @param runnable the runnable to run
+     * @return a Result containing either a Void value if the runnable completed successfully, or an Err containing the
+     * exception that was thrown
+     */
+    @SuppressWarnings("unchecked")
+    static <E extends Throwable> Result<Void, E> ofChecked(final ExceptionallyRunnable<E> runnable) {
+        try {
+            runnable.run();
+            return Ok.empty();
+        } catch (final Throwable throwable) {
+            return Err.of((E) throwable);
+        }
+    }
+
 
     /**
      * If the Result is an instance of {@link Ok}, returns the Ok-value, otherwise throws a RuntimeException.
