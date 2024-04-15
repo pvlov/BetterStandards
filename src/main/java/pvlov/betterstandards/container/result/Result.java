@@ -59,7 +59,9 @@ public sealed interface Result<T, E> permits Ok, Err {
     /**
      * This method evaluates the supplying function and wraps the resulting value into the
      * respective Result-Type. If the supplying function throws any checked Exception it is wrapped inside
-     * an instance of {@link Err}, otherwise the value of the Suppliers get()-method is wrapped inside an instance of {@link Ok}
+     * an instance of {@link Err}, otherwise the value of the Suppliers get()-method is wrapped inside an instance of {@link Ok}.
+     * Be aware that if a method declares more than one Exception in the throws-declaration, the type of the error
+     * will be resolved to {@link Exception} instead of the specific Exception.
      *
      * @param supplier the supplying-function that can throw a checked Exception
      * @return If the supplier throws an Exception an instance of {@link Err}
@@ -78,7 +80,8 @@ public sealed interface Result<T, E> permits Ok, Err {
     /**
      * Runs the given runnable, catching any exceptions and returning a Result. If the runnable completes without
      * throwing a checked exception, an Ok(Void) result is returned. If the runnable throws a checked exception, an Err containing
-     * the exception is returned.
+     * the exception is returned. Be aware that if a method declares more than one Exception in the throws-declaration, the
+     * type of the error will be resolved to {@link Exception} instead of the specific Exception.
      *
      * @param runnable the runnable to run
      * @return a Result containing either a Void value if the runnable completed successfully, or an Err containing the
