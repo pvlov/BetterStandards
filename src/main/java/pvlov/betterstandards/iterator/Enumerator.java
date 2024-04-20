@@ -13,6 +13,7 @@ import java.util.NoSuchElementException;
  */
 public interface Enumerator<T> {
 
+
     static <T> Enumerator<T> fromIterator(final Iterator<T> source) {
         return new Enumerator<>() {
             int counter = 0;

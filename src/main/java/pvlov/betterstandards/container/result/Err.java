@@ -7,6 +7,7 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
+import java.util.stream.Stream;
 
 public final class Err<Void, E> implements Result<Void, E> {
 
@@ -133,6 +134,16 @@ public final class Err<Void, E> implements Result<Void, E> {
     @Override
     public Result<Void, NoSuchElementException> filter(Predicate<? super Void> condition) {
         return Err.of(new NoSuchElementException("Calling filter() on Err!"));
+    }
+
+    /**
+     * Wraps the Ok-Value of this Result into a Stream if it is an instance of {@link Ok}, else just returns an empty Stream.
+     *
+     * @return a Stream describing this Result.
+     */
+    @Override
+    public Stream<Void> stream() {
+        return Stream.empty();
     }
 
 

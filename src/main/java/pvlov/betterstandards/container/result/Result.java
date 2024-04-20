@@ -9,9 +9,10 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
+import java.util.stream.Stream;
 
 /**
- * Results are another way to represent error-prone methods, rather than throwing Exceptions
+ * Results are another way to represent errors and successes in methods, rather than throwing Exceptions
  * you return an {@link Ok}-Object on success and an {@link Err}-Object on failure of a method.
  * Results are immutable, any operation that would require mutating the internal state of the
  * Result (e.g. {@link Result#map(Function)}) will instead return a new Result with the expected internal state change.
@@ -320,4 +321,11 @@ public sealed interface Result<T, E> permits Ok, Err {
      * @throws NullPointerException if the Result is an instance of {@link Ok} and the given Predicate is null
      */
     Result<T, NoSuchElementException> filter(final Predicate<? super T> condition);
+
+    /**
+     * Wraps the Ok-Value of this Result into a Stream if it is an instance of {@link Ok}, else just returns an empty Stream.
+     *
+     * @return a Stream describing this Result.
+     */
+    Stream<T> stream();
 }

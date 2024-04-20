@@ -5,7 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5d6e5e79-fbb5-496f-b861-ff57c58f0309" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/pvlov/betterstandards/container/result/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pvlov/betterstandards/container/result/Results.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pvlov/betterstandards/functional/QuadConsumer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pvlov/betterstandards/functional/QuadFunction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pvlov/betterstandards/functional/TriConsumer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pvlov/betterstandards/functional/TriFunction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pvlov/betterstandards/container/result/Err.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pvlov/betterstandards/container/result/Err.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pvlov/betterstandards/container/result/Ok.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pvlov/betterstandards/container/result/Ok.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pvlov/betterstandards/container/result/Result.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pvlov/betterstandards/container/result/Result.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pvlov/betterstandards/datastructures/BloomFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pvlov/betterstandards/datastructures/BloomFilter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +61,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="AnnotationType" />
         <option value="Interface" />
         <option value="Class" />
       </list>
@@ -79,39 +90,40 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Downloaded.Files.Path.Enabled": "false",
-    "Gradle.BetterStandards [:Main.main()].executor": "Run",
-    "Gradle.BetterStandards [build].executor": "Run",
-    "Gradle.BetterStandards [clean].executor": "Run",
-    "Repository.Attach.Annotations": "true",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Gradle.BetterStandards [:BloomFilter.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.BetterStandards [:Main.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.BetterStandards [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.BetterStandards [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;true&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.editor&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RunManager" selected="Application.pvlov.betterstandards.iterator.Main">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.pvlov.Main" />
-      <module name="BetterStandards.main" />
+}</component>
+  <component name="RunManager" selected="Application.pvlov.betterstandards.container.result.Main">
+    <configuration name="BloomFilter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="pvlov.betterstandards.datastructures.BloomFilter" />
+      <module name="pvlov.betterstandards.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.pvlov.*" />
+          <option name="PATTERN" value="pvlov.betterstandards.datastructures.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -119,12 +131,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="pvlov.betterstandards.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="pvlov.betterstandards.Main" />
+    <configuration name="pvlov.betterstandards.container.result.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="pvlov.betterstandards.container.result.Main" />
       <module name="pvlov.betterstandards.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="pvlov.betterstandards.*" />
+          <option name="PATTERN" value="pvlov.betterstandards.container.result.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -191,11 +203,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.BloomFilter" />
+        <item itemvalue="Application.pvlov.betterstandards.container.result.Main" />
         <item itemvalue="Gradle.BetterStandards [build]" />
         <item itemvalue="Gradle.BetterStandards [clean]" />
         <item itemvalue="Application.pvlov.betterstandards.iterator.Main" />
-        <item itemvalue="Application.pvlov.betterstandards.Main" />
-        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -221,6 +233,11 @@
       <workItem from="1712956602431" duration="598000" />
       <workItem from="1712995489956" duration="1004000" />
       <workItem from="1712996502254" duration="2933000" />
+      <workItem from="1713077676892" duration="9400000" />
+      <workItem from="1713173820586" duration="5000" />
+      <workItem from="1713173828557" duration="1122000" />
+      <workItem from="1713187455641" duration="1604000" />
+      <workItem from="1713435131459" duration="5001000" />
     </task>
     <servers />
   </component>

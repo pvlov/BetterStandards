@@ -7,6 +7,7 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
+import java.util.stream.Stream;
 
 public final class Ok<T, Void> implements Result<T, Void> {
     private final T okValue;
@@ -136,6 +137,16 @@ public final class Ok<T, Void> implements Result<T, Void> {
     @Override
     public Result<T, NoSuchElementException> filter(Predicate<? super T> condition) {
         return condition.test(okValue) ? Ok.of(okValue) : Err.of(new NoSuchElementException("Ok-Value of the Result did not pass the given condition"));
+    }
+
+    /**
+     * Wraps the Ok-Value of this Result into a Stream if it is an instance of {@link Ok}, else just returns an empty Stream.
+     *
+     * @return a Stream describing this Result.
+     */
+    @Override
+    public Stream<T> stream() {
+        return Stream.of(okValue);
     }
 
 
