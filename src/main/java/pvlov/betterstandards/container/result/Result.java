@@ -187,6 +187,8 @@ public sealed interface Result<T, E> permits Ok, Err {
      */
     T orElseGet(final Supplier<? extends T> supplier);
 
+    T orElseApply(final Function<? super E, ? extends T> function);
+
     /**
      * If the Result is an instance of {@link Ok}, returns an Optional describing (as if by ofNullable) the result of applying the given mapping function to the Ok-value,
      * otherwise returns an empty Optional. If the mapping function returns a null result then this method returns an empty Optional.
@@ -274,6 +276,8 @@ public sealed interface Result<T, E> permits Ok, Err {
      */
     <U> Result<U, E> map(final Function<? super T, ? extends U> okMapper);
 
+    <U> Result<U, E> flatMap(final Function<? super T, ? extends Result<U, E>> okMapper);
+
     /**
      * Peeks at the Ok-Value of this Result, if it is an instance of {@link Ok},
      * and invokes the given consumer with the Ok-Value.
@@ -314,7 +318,7 @@ public sealed interface Result<T, E> permits Ok, Err {
 
     /**
      * Applies the given predicate to the Ok-Value of this Result if it is an instance of {@link Ok} and returns an {@link Ok} if
-     * the given Predicate returns true for the Ok-Value. Otherwise this returns an {@link Err} containing a {@link NoSuchElementException}
+     * the given Predicate returns true for the Ok-Value. Otherwise, this returns an {@link Err} containing a {@link NoSuchElementException}
      *
      * @param condition the condition to check
      * @return A Result containing the unchanged Ok-Value if it passes the given Predicate-test, otherwise an Err with a NoSuchElementException
@@ -328,4 +332,13 @@ public sealed interface Result<T, E> permits Ok, Err {
      * @return a Stream describing this Result.
      */
     Stream<T> stream();
+
+    /**
+     * Wraps the Ok-Value of this Result into a Stream and applying the provided flatMapper if it is an instance of {@link Ok}, else just returns an empty Stream.
+     * This method is recommended to use if the Ok-Type {@link T} is a Collection that provides a stream()-method.
+     *
+     * @return a Stream describing this Result.
+     */
+    <R> Stream<R> stream(Function<? super T, ? extends Stream<? extends R>> flatMapper);
+
 }

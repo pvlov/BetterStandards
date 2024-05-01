@@ -5,17 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5d6e5e79-fbb5-496f-b861-ff57c58f0309" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/pvlov/betterstandards/container/result/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pvlov/betterstandards/container/result/Results.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pvlov/betterstandards/functional/QuadConsumer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pvlov/betterstandards/functional/QuadFunction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pvlov/betterstandards/functional/TriConsumer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pvlov/betterstandards/functional/TriFunction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pvlov/betterstandards/Algorithms.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pvlov/betterstandards/container/result/Err.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pvlov/betterstandards/container/result/Err.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pvlov/betterstandards/container/result/Ok.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pvlov/betterstandards/container/result/Ok.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pvlov/betterstandards/container/result/Result.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pvlov/betterstandards/container/result/Result.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pvlov/betterstandards/datastructures/BloomFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pvlov/betterstandards/datastructures/BloomFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pvlov/betterstandards/container/result/Results.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,6 +88,7 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Gradle.BetterStandards [:Algorithms.main()].executor&quot;: &quot;Run&quot;,
     &quot;Gradle.BetterStandards [:BloomFilter.main()].executor&quot;: &quot;Run&quot;,
     &quot;Gradle.BetterStandards [:Main.main()].executor&quot;: &quot;Run&quot;,
     &quot;Gradle.BetterStandards [build].executor&quot;: &quot;Run&quot;,
@@ -117,7 +113,20 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.pvlov.betterstandards.container.result.Main">
+  <component name="RunManager" selected="Application.Algorithms">
+    <configuration name="Algorithms" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="pvlov.betterstandards.Algorithms" />
+      <module name="pvlov.betterstandards.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pvlov.betterstandards.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="BloomFilter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="pvlov.betterstandards.datastructures.BloomFilter" />
       <module name="pvlov.betterstandards.main" />
@@ -137,19 +146,6 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="pvlov.betterstandards.container.result.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="pvlov.betterstandards.iterator.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="pvlov.betterstandards.iterator.Main" />
-      <module name="pvlov.betterstandards.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="pvlov.betterstandards.iterator.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -203,11 +199,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Algorithms" />
         <item itemvalue="Application.BloomFilter" />
         <item itemvalue="Application.pvlov.betterstandards.container.result.Main" />
         <item itemvalue="Gradle.BetterStandards [build]" />
         <item itemvalue="Gradle.BetterStandards [clean]" />
-        <item itemvalue="Application.pvlov.betterstandards.iterator.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -237,7 +233,12 @@
       <workItem from="1713173820586" duration="5000" />
       <workItem from="1713173828557" duration="1122000" />
       <workItem from="1713187455641" duration="1604000" />
-      <workItem from="1713435131459" duration="5001000" />
+      <workItem from="1713435131459" duration="6513000" />
+      <workItem from="1713634224295" duration="1696000" />
+      <workItem from="1713641411101" duration="4581000" />
+      <workItem from="1714229285545" duration="4780000" />
+      <workItem from="1714419938995" duration="156000" />
+      <workItem from="1714502390151" duration="1790000" />
     </task>
     <servers />
   </component>

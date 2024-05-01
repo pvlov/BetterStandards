@@ -17,7 +17,7 @@ public final class Ok<T, Void> implements Result<T, Void> {
     }
 
     public static <T, Void> Ok<T, Void> of(final T okValue) {
-        return new Ok<>(okValue);
+        return new Ok<>(Objects.requireNonNull(okValue));
     }
 
     public static <Void> Ok<java.lang.Void, Void> empty() {
@@ -35,7 +35,7 @@ public final class Ok<T, Void> implements Result<T, Void> {
     }
 
     @Override
-    public boolean isOkAnd(Predicate<? super T> condition) {
+    public boolean isOkAnd(final Predicate<? super T> condition) {
         return condition.test(okValue);
     }
 
@@ -45,7 +45,7 @@ public final class Ok<T, Void> implements Result<T, Void> {
     }
 
     @Override
-    public boolean isErrAnd(Predicate<? super Void> condition) {
+    public boolean isErrAnd(final Predicate<? super Void> condition) {
         return false;
     }
 
@@ -74,12 +74,17 @@ public final class Ok<T, Void> implements Result<T, Void> {
     }
 
     @Override
+    public T orElseApply(final Function<? super Void, ? extends T> function) {
+        return okValue;
+    }
+
+    @Override
     public <U> Optional<U> mapOk(final Function<? super T, ? extends U> okMapper) {
         return Optional.ofNullable(okMapper.apply(okValue));
     }
 
     @Override
-    public <U> Optional<U> mapErr(Function<? super Void, ? extends U> errMapper) {
+    public <U> Optional<U> mapErr(final Function<? super Void, ? extends U> errMapper) {
         return Optional.empty();
     }
 
@@ -109,23 +114,28 @@ public final class Ok<T, Void> implements Result<T, Void> {
     }
 
     @Override
-    public <U> Result<U, Void> map(Function<? super T, ? extends U> okMapper) {
+    public <U> Result<U, Void> map(final Function<? super T, ? extends U> okMapper) {
         return Ok.of(okMapper.apply(okValue));
     }
 
     @Override
-    public Result<T, Void> peekOk(Consumer<? super T> okConsumer) {
+    public <U> Result<U, Void> flatMap(final Function<? super T, ? extends Result<U, Void>> okMapper) {
+        return okMapper.apply(okValue);
+    }
+
+    @Override
+    public Result<T, Void> peekOk(final Consumer<? super T> okConsumer) {
         okConsumer.accept(okValue);
         return this;
     }
 
     @Override
-    public Result<T, Void> peekErr(Consumer<? super Void> errConsumer) {
+    public Result<T, Void> peekErr(final Consumer<? super Void> errConsumer) {
         return this;
     }
 
     @Override
-    public void match(Consumer<? super T> okConsumer, Consumer<? super Void> errConsumer) {
+    public void match(final Consumer<? super T> okConsumer, final Consumer<? super Void> errConsumer) {
         okConsumer.accept(okValue);
     }
 
@@ -135,23 +145,22 @@ public final class Ok<T, Void> implements Result<T, Void> {
     }
 
     @Override
-    public Result<T, NoSuchElementException> filter(Predicate<? super T> condition) {
+    public Result<T, NoSuchElementException> filter(final Predicate<? super T> condition) {
         return condition.test(okValue) ? Ok.of(okValue) : Err.of(new NoSuchElementException("Ok-Value of the Result did not pass the given condition"));
     }
 
-    /**
-     * Wraps the Ok-Value of this Result into a Stream if it is an instance of {@link Ok}, else just returns an empty Stream.
-     *
-     * @return a Stream describing this Result.
-     */
     @Override
     public Stream<T> stream() {
         return Stream.of(okValue);
     }
 
+    @Override
+    public <R> Stream<R> stream(final Function<? super T, ? extends Stream<? extends R>> flatMapper) {
+        return Stream.of(okValue).flatMap(flatMapper);
+    }
 
     @Override
-    public boolean equals(Object other) {
+    public boolean equals(final Object other) {
         return other instanceof Ok<?, ?> otherOk && Objects.equals(otherOk.okValue, okValue);
     }
 
