@@ -9,13 +9,7 @@ import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 
-public final class Ok<T, Void> implements Result<T, Void> {
-    private final T okValue;
-
-    private Ok(final T val) {
-        this.okValue = val;
-    }
-
+public record Ok<T, Void>(T okValue) implements Result<T, Void> {
     public static <T, Void> Ok<T, Void> of(final T okValue) {
         return new Ok<>(Objects.requireNonNull(okValue));
     }
@@ -130,7 +124,7 @@ public final class Ok<T, Void> implements Result<T, Void> {
     }
 
     @Override
-    public Result<T, Void> peekErr(final Consumer<? super Void> errConsumer) {
+    public Result<T, Void> peekErr(final Consumer<?  super Void> errConsumer) {
         return this;
     }
 

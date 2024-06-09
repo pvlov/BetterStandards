@@ -9,18 +9,11 @@ import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 
-public final class Err<Void, E> implements Result<Void, E> {
-
-    final E errorValue;
-
-    private Err(final E e) {
-        this.errorValue = e;
-    }
+public record Err<Void, E>(E errorValue) implements Result<Void, E> {
 
     public static <Void, E> Err<Void, E> of(final E errorValue) {
         return new Err<>(errorValue);
     }
-
     @Override
     public Void unwrap() throws RuntimeException {
         throw new RuntimeException("Calling unwrap() on Err!");

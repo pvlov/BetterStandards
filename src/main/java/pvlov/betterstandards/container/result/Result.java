@@ -187,7 +187,16 @@ public sealed interface Result<T, E> permits Ok, Err {
      */
     T orElseGet(final Supplier<? extends T> supplier);
 
-    T orElseApply(final Function<? super E, ? extends T> function);
+    /**
+     * If the Result is an instance of {@link Ok}, returns the ok-value, otherwise returns the value produced by applying the provided
+     * mapping function to the Error-Value
+     *
+     *
+     * @param  errorMapper the mapping function that produces a value to be returned, when applied to the Error-Value
+     * @return the ok-value, if the Result is an instance of {@link Ok}, otherwise the value produced by the supplying function
+     * @throws NullPointerException if the supplying function is null and the Result is an instance of {@link Err}
+     */
+    T orElseApply(final Function<? super E, ? extends T> errorMapper);
 
     /**
      * If the Result is an instance of {@link Ok}, returns an Optional describing (as if by ofNullable) the result of applying the given mapping function to the Ok-value,
@@ -276,6 +285,15 @@ public sealed interface Result<T, E> permits Ok, Err {
      */
     <U> Result<U, E> map(final Function<? super T, ? extends U> okMapper);
 
+    /**
+     * Returns a new Result containing the result of mapping the Ok-Value using the provided flat-mapper function if
+     * this Result is an instance of {@link Ok}, otherwise just returns the {@link Err} as is.
+     *
+     * @param okMapper the mapper function
+     * @return returns a new Result with the Ok-Value of this Result mapped using the provided mapper function,
+     * if it is an instance of {@link Ok}
+     * @throws NullPointerException if the mapper function is null and the Result is an instance of {@link Ok}.
+     */
     <U> Result<U, E> flatMap(final Function<? super T, ? extends Result<U, E>> okMapper);
 
     /**
